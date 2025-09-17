@@ -127,27 +127,27 @@ $$
 
 where:
 - $\mu(s_0)$ is the probability of the initial state
-- $\pi_\theta(a_t|s_t)$ is our policy (probability of action $a_t$ given state $s_t$)
-- $P(s_{t+1}|s_t, a_t)$ is the environment dynamics (probability of next state)
+- $\pi_\theta(a_t \mid s_t)$ is our policy (probability of action $a_t$ given state $s_t$)
+- $P(s_{t+1} \mid s_t, a_t)$ is the environment dynamics (probability of next state)
 
 Taking the logarithm:
 
 $$
-\log \pi_\theta(\tau) = \log \mu(s_0) + \sum_{t=0}^{T-1} [\log \pi_\theta(a_t|s_t) + \log P(s_{t+1}|s_t, a_t)]
+\log \pi_\theta(\tau) = \log \mu(s_0) + \sum_{t=0}^{T-1} [\log \pi_\theta(a_t \mid s_t) + \log P(s_{t+1} \mid s_t, a_t)]
 $$
 
 When we differentiate with respect to $\theta$:
 
 $$
-\nabla_\theta \log \pi_\theta(\tau) = \nabla_\theta \sum_{t=0}^{T-1} \log \pi_\theta(a_t|s_t)
+\nabla_\theta \log \pi_\theta(\tau) = \nabla_\theta \sum_{t=0}^{T-1} \log \pi_\theta(a_t \mid s_t)
 $$
 
-**Notice something remarkable**: The environment dynamics $P(s_{t+1}|s_t, a_t)$ completely disappear! This is because they don't depend on our policy parameters $\theta$. We only need to differentiate the parts of the trajectory probability that actually involve our policy.
+**Notice something remarkable**: The environment dynamics $P(s_{t+1}\mid s_t, a_t)$ completely disappear! This is because they don't depend on our policy parameters $\theta$. We only need to differentiate the parts of the trajectory probability that actually involve our policy.
 
 This gives us our final policy gradient formula:
 
 $$
-\nabla_\theta \mathbb{E}_{\tau \sim \pi_\theta}[R(\tau)] = \mathbb{E}_{\tau \sim \pi_\theta}\left[R(\tau) \sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t|s_t)\right]
+\nabla_\theta \mathbb{E}_{\tau \sim \pi_\theta}[R(\tau)] = \mathbb{E}_{\tau \sim \pi_\theta}\left[R(\tau) \sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t \mid s_t)\right]
 $$
 
 ---
@@ -165,7 +165,7 @@ Imagine a football match that ends 1–0. Using our current formula, every playe
 The solution is conceptually simple: instead of asking "was the outcome good?", we ask "was the outcome *better than expected*?" We introduce a baseline $b$ and modify our gradient:
 
 $$
-\nabla_\theta \mathbb{E}_{\tau \sim \pi_\theta}[R(\tau)] = \mathbb{E}_{\tau \sim \pi_\theta}\left[(R(\tau) - b) \sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t|s_t)\right]
+\nabla_\theta \mathbb{E}_{\tau \sim \pi_\theta}[R(\tau)] = \mathbb{E}_{\tau \sim \pi_\theta}\left[(R(\tau) - b) \sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t \mid s_t)\right]
 $$
 
 A lot of you at this point might ask, won't this baseline make our gradient biased? (Afterall, the only thing that makes a statistician upset, aside from not having IID assumptions, are unbiased estimators) The answer is no. Let me show why.
@@ -177,7 +177,7 @@ A lot of you at this point might ask, won't this baseline make our gradient bias
 We need to show that:
 
 $$
-\mathbb{E}_{\tau \sim \pi_\theta}\left[b \sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t|s_t)\right] = 0
+\mathbb{E}_{\tau \sim \pi_\theta}\left[b \sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t \mid s_t)\right] = 0
 $$
 
 **Step 1**: Start with a fundamental fact about probability distributions. Since $\pi_\theta(\tau)$ is a probability distribution over all possible trajectories:
@@ -275,7 +275,7 @@ So the optimal baseline is the **expected reward**, i.e. the **value function** 
 Once we use the optimal baseline, our gradient becomes:
 
 $$
-\nabla_\theta \mathbb{E}_{\tau \sim \pi_\theta}[R(\tau)] = \mathbb{E}_{\tau \sim \pi_\theta}\left[(R(\tau) - V(s)) \sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t|s_t)\right]
+\nabla_\theta \mathbb{E}_{\tau \sim \pi_\theta}[R(\tau)] = \mathbb{E}_{\tau \sim \pi_\theta}\left[(R(\tau) - V(s)) \sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t \mid s_t)\right]
 $$
 
 The term $(R(\tau) - V(s))$ is the **advantage function** $A(s,a)$.
