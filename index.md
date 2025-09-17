@@ -23,13 +23,13 @@ $$
 J(\theta) = \int \pi_\theta(\tau) R(\tau) \, d\tau.
 $$
 
-This integral is just a fancy way of saying "we need to account for *every possible future*," and that's computationally tedious. We need a trick.
+This integral is just a way of saying "we need to account for *every possible future*," and that's computationally tedious. We need a trick.
 
 ---
 
 ### Mathematical Foundations: Understanding Expectations
 
-Before we dive into the solution, let's establish the mathematical foundation that will be crucial for understanding the trick. 
+Before we dive into the solution, let's establish certain mathematical foundations that will come in handy. 
 
 **Definition of Expectation**: For a continuous random variable $X$ with probability density function $f(x)$, the expectation of some function $g(X)$ is defined as:
 
@@ -37,14 +37,13 @@ $$
 \mathbb{E}[g(X)] = \int g(x) f(x) \, dx
 $$
 
-Notice the structure carefully:
+Where:
 - $f(x)$ is the **probability density function** (it tells us how likely each value of $x$ is)
 - $g(x)$ is the **function we care about** (what we want to compute the average of)
 - The integral computes a weighted average, where each value $g(x)$ is weighted by its probability $f(x)$
 
-This structure will be absolutely crucial for understanding the log-derivative trick that follows.
 
-In our reinforcement learning context:
+In reinforcement learning:
 - $\pi_\theta(\tau)$ plays the role of $f(x)$ (probability density over trajectories)
 - $R(\tau)$ plays the role of $g(x)$ (the reward function we care about)
 - So our problem becomes:
@@ -93,7 +92,7 @@ $$
 \nabla_\theta \mathbb{E}_{\tau \sim \pi_\theta}[R(\tau)] = \nabla_\theta \int \pi_\theta(\tau) R(\tau) \, d\tau
 $$
 
-Assuming we can interchange the gradient and integral (a technical condition that holds in most practical cases):
+Assuming we can interchange the gradient and integral (Careful: You can do this operation only where the the integral is finite (courtest of Leibniz rule), since both differentiation and integration are limit operations, you **cannot** apply this slight on infinite limit operations):
 
 $$
 = \int \nabla_\theta \pi_\theta(\tau) R(\tau) \, d\tau
@@ -142,7 +141,7 @@ $$
 \nabla_\theta \log \pi_\theta(\tau) = \nabla_\theta \sum_{t=0}^{T-1} \log \pi_\theta(a_t \mid s_t)
 $$
 
-**Notice something remarkable**: The environment dynamics $P(s_{t+1}\mid s_t, a_t)$ completely disappear! This is because they don't depend on our policy parameters $\theta$. We only need to differentiate the parts of the trajectory probability that actually involve our policy.
+**Notice something rather cool**: The environment dynamics $P(s_{t+1}\mid s_t, a_t)$ completely disappear! This is because they don't depend on our policy parameters $\theta$. We only need to differentiate the parts of the trajectory probability that actually involve our policy.
 
 This gives us our final policy gradient formula:
 
@@ -156,7 +155,7 @@ $$
 
 We now have a formula we can actually compute: sample some trajectories, calculate their total rewards, and update our policy. But there's a serious practical problem: **the estimates have enormous variance**.
 
-Imagine a football match that ends 1–0. Using our current formula, every player on the winning team gets the exact same "reward signal" (the final score), including both the striker who scored the winning goal and the defender who almost caused an own goal. They all get rewarded equally, even though their individual contributions were vastly different.
+Take for instance, a football match that ends 1–0. Using our current formula, every player on the winning team gets the exact same "reward signal" (the final score), including both the striker who scored the winning goal and the defender who almost caused an own goal. They all get rewarded equally, even though their individual contributions were vastly different.
 
 ---
 
@@ -246,6 +245,12 @@ Define:
 
 $$
 \text{Var}[R(\tau) - b] = \mathbb{E}[(R(\tau) - b)^2] - (\mathbb{E}[R(\tau) - b])^2
+$$
+
+Recall that this directly follows from the definition of Variance:
+
+$$
+\text{Var}(\X) = \mathbb{E(\X)^2} -(\mathbb{E[\X]})^2
 $$
 
 After simplifying, minimizing variance boils down to minimizing:
