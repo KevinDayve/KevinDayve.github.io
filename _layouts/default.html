@@ -5,14 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }} | {{ site.title }}</title>
     {{ site.theme_css }}
-    <!-- MathJax v3 -->
-    <script>
-      window.MathJax = {
-        tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
-        options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
-      };
-    </script>
-    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
     <style>
       body { line-height: 1.6; }
       .container { max-width: 860px; margin: 3rem auto; padding: 0 1rem; }
@@ -22,9 +14,30 @@
     </style>
   </head>
   <body>
-    <main class="container">
+    <!-- Tell MathJax to process only elements with this class -->
+    <main class="container mathjax-process">
       <h1>{{ page.title }}</h1>
       {{ content }}
     </main>
+
+    <!-- MathJax v3 -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$','$$'], ['\\[','\\]']]
+        },
+        options: {
+          // Only process elements with class "mathjax-process"
+          processHtmlClass: 'mathjax-process',
+          // Skip code/pre etc. so maths inside code blocks isn't touched
+          skipHtmlTags: ['script','noscript','style','textarea','pre','code']
+        },
+        svg: { fontCache: 'global' }
+      };
+    </script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
   </body>
 </html>
