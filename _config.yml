@@ -1,0 +1,8 @@
+title: Kevin’s Notes
+description: Reinforcement learning, but actually explained.
+theme: minima
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax
