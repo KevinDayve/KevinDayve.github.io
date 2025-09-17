@@ -250,7 +250,7 @@ $$
 Recall that this directly follows from the definition of Variance:
 
 $$
-\text{Var}(\X) = \mathbb{E(\X)^2} -(\mathbb{E[\X]})^2
+\text{Var}($X$) = \mathbb{E($X$)^2} -(\mathbb{E[$\X$]})^2
 $$
 
 After simplifying, minimizing variance boils down to minimizing:
