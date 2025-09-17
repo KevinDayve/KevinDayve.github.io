@@ -3,6 +3,8 @@ layout: default
 title: Reinforcement Learning: Fundamentals of Policy Gradients
 ---
 
+## Reinforcement Learning: Fundamentals of Policy Gradients
+
 For the past few months, I've been diving deep into reinforcement learning, and it's hard not to feel like we're in the middle of a renaissance — thanks in huge part to DeepSeek and its release of R1. The algorithm that underpins the stellar success of R1 is called **Group Relative Policy Optimization (GRPO)**. However, the roots of this success can be traced back to a much older and simpler idea: the **policy gradient**. This post is my attempt to demystify why the equations look the way they do, as it often behooves me to understand the "why" behind everything hehehe.
 
 ---
