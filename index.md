@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Home
+title: Hey, I'm Kevin 👋
 ---
-# Hey, I'm Kevin 👋
+
 I coax neural networks toward intelligence and chase mathematical beauty in my spare time.
 
 - **[About](/about)** — my ongoing negotiation with gradient descent  
