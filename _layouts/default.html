@@ -9,12 +9,21 @@
       body { line-height: 1.6; }
       .container { max-width: 860px; margin: 3rem auto; padding: 0 1rem; }
       h1,h2,h3 { line-height: 1.25; }
-      code, pre { font-size: 0.95rem; }
+      code, pre { font-size: .95rem; overflow-x: auto; }
+      a { text-decoration: underline; text-underline-offset: 2px; }
       hr { margin: 2rem 0; }
     </style>
+
   </head>
   <body>
     <!-- Tell MathJax to process only elements with this class -->
+    <nav style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <a href="{{ '/about' | relative_url }}">About</a>
+    <a href="{{ '/math' | relative_url }}">Math</a>
+    <a href="{{ '/reading' | relative_url }}">Reading</a>
+    <a href="{{ '/misc' | relative_url }}">Miscellenea</a>
+    </nav>
     <main class="container mathjax-process">
       <h1>{{ page.title }}</h1>
       {{ content }}
