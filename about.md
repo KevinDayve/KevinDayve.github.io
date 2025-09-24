@@ -4,8 +4,6 @@ title: About
 permalink: /about
 ---
 
-# About
-
 ## About
 
 I'm Kevin, a professional optimist in the pursuit of making machines slightly less terrible at thinking.
