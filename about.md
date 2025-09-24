@@ -4,8 +4,6 @@ title: About
 permalink: /about
 ---
 
-## About
-
 I'm Kevin, a professional optimist in the pursuit of making machines slightly less terrible at thinking.
 
 By day, I wrangle ML systems into submission, though "wrangle" might be generous. It's more accurate to say I politely negotiate with temperamental neural networks while they decide whether today is the day they'll converge or simply mock my learning rate choices and make me question where it all went tangibly wrong. My relationship with gradient descent can best be described as "it's complicated."

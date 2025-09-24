@@ -4,8 +4,6 @@ title: Math
 permalink: /math
 ---
 
-# Math
-
 Derivations, proofs, and worked examples.
 
 - **A derivation that I did a week back:** [Policy Gradients from the ground up](/math/policy_gradients)
