@@ -40,7 +40,7 @@ This doesn't mean abandoning moral conviction. It means relocating moral wisdom 
 
 Haidt suggests moral progress happens not through better arguments but through better understanding of why different people react differently to the same moral scenarios. This feels both intellectually honest and practically urgent in a world where everyone's elephant is absolutely convinced it's heading in the right direction while everyone else's is clearly deluded.
 
-The uncomfortable truth is that everything I've just written falls into the same pattern. My enthusiastic endorsement of Haidt's thesis isn't the result of careful rational evaluation—it's because his arguments resonated with intuitions I already had about human psychology. The rider has simply done what riders do: constructed a plausible narrative explaining why this particular elephant was obviously heading somewhere worth going.
+The uncomfortable truth is that everything I've just written falls into the same pattern. My enthusiastic endorsement of Haidt's thesis isn't the result of careful rational evaluation - it's because his arguments resonated with intuitions I already had about human psychology. The rider has simply done what riders do: constructed a plausible narrative explaining why this particular elephant was obviously heading somewhere worth going.
 
 But perhaps that's the point. Maybe recognizing the rider for what it is - a skilled but ultimately subordinate press secretary for decisions made elsewhere - is the first step toward a more mature relationship with our beliefs. Not abandoning conviction, but holding it more lightly. Not moral relativism, but moral modesty.
 
