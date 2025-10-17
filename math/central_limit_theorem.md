@@ -16,7 +16,7 @@ The formal proof of the Central Limit Theorem feels almost anti-climatic given h
 
 **Given:**
 
-* Random variables $Y_1, Y_2, \ldots$ from some distribution (any distribution, really—that's the beauty of it)
+* Random variables $Y_1, Y_2, \ldots$ from some distribution (any distribution, to be fair)
 * Common mean $\mu$ and finite variance $\sigma^2$
 * These variables are independent
 
