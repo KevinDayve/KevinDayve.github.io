@@ -44,7 +44,7 @@ $$
 M_Y\left(\frac{t}{\sqrt{n}}\right) = \sum_{k=0}^{\infty} M_Y^{(k)}(0) \frac{(t/\sqrt{n})^k}{k!}
 $$
 
-where $M_Y^{(k)}(0) = \frac{d^k}{dt^k}M_Y(t)|_{t=0}$. Since $Y^*$ has mean 0 and variance 1:
+where $$M_Y^{(k)}(0) = \frac{d^k}{dt^k}M_Y(t)|_{t=0}$$. Since $$Y^*$$ has mean 0 and variance 1:
 
 * $M_Y^{(0)}(0) = 1$
 * $M_Y^{(1)}(0) = 0$
