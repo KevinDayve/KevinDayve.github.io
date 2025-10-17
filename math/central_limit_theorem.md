@@ -106,17 +106,17 @@ Measurement errors? Slight variations in temperature, tiny vibrations, imperfect
 
 The normal distribution isn't normal because the world is fundamentally Gaussian. It's normal because the world is fundamentally **additive**. We are sums of influences, products of accumulated small effects, and the mathematics of summation inevitably produces normality.
 
-This has implications for how we think about ourselves. When you focus on your particular flaws and shortcomings, you're seeing individual random variables—the specific ways you deviate from some imagined ideal. But you're not an individual random variable. You're a sum of thousands of influences, experiences, genetic factors, environmental conditions, random events, and deliberate choices.
+This has implications for how we think about ourselves. When you focus on your particular flaws and shortcomings, you're seeing individual random variables — the specific ways you deviate from some imagined ideal. But you're not an individual random variable. You're a sum of thousands of influences, experiences, genetic factors, environmental conditions, random events, and deliberate choices.
 
 The mathematics says: sums converge to normal. Your particular configuration of flaws, when you step back and see yourself in the aggregate, places you somewhere on a distribution that encompasses everyone. You're not an outlier. You can't be, because the human distribution is itself the result of summing countless individual variations.
 
-To be fair, the theorem doesn't say *you're perfect*. It says something more profound: you're **normal**, in the most literal mathematical sense. And normal is exactly where the bulk of the distribution lives.
+To be fair, the theorem doesn't say *you're perfect*. It says: you're **normal**, in the most literal mathematical sense. And normal is exactly where the bulk of the distribution lives.
 
-Dostoevsky's novels are full of characters who try to eliminate their variance—to become perfectly rational, perfectly good, perfectly controlled. Raskolnikov tries to be a superman above moral law and ends up a murderer haunted by guilt. The Grand Inquisitor tries to perfect humanity and ends up imprisoning Christ himself. Prince Myshkin believes he can be perfectly good and ends up causing more harm than help, unable to function in a world that requires accepting one's own capacity for imperfection.
+Dostoevsky's novels are full of characters who try to eliminate their variance — to become perfectly rational, perfectly good, perfectly controlled. Raskolnikov tries to be a superman above moral law and ends up a murderer haunted by guilt. The Grand Inquisitor tries to perfect humanity and ends up imprisoning Christ himself. Prince Myshkin believes he can be perfectly good and ends up causing more harm than help, unable to function in a world that requires accepting one's own capacity for imperfection.
 
 They all attempt to reach **zero variance**, and in doing so, they lose the very thing that makes love and change and growth possible. They become isolated, brittle, and destructive.
 
-Meanwhile, it's the flawed characters who carry the capacity for redemption. Sonya the prostitute, Father Zosima with his mysterious past, Dmitri Karamazov with his wild passions—they've accepted their own imperfection. They're not trying to transcend the human condition; they're trying to live fully within it. They understood that you cannot eliminate variance and imperfections and still have something worth calling human. You need the variance. Not infinite, not zero, but **real**. Bounded but present.
+Meanwhile, it's the flawed characters who carry the capacity for redemption. Sonya the prostitute, Father Zosima with his mysterious past, Dmitri Karamazov with his wild passions — they've accepted their own imperfection. They're not trying to transcend the human condition; they're trying to live fully within it. They understood that you cannot eliminate variance and imperfections and still have something worth calling human. You need the variance. Not infinite, not zero, but **real**. Bounded but present.
 
 Endless pursuit of perfection, of life without any change or variance, makes it rather bleak and dull. Which is exactly what happens to Grand in *Camus's The Plague*, who spends the entire novel trying to write the perfect first sentence. He rewrites it endlessly, changing a word here, adjusting the rhythm there, never satisfied, never moving forward.
 
@@ -138,7 +138,7 @@ The theorem is **asymptotic**. It tells you what happens as $n \to \infty$, but 
 
 For small $n$, the individual character of the distribution matters a lot. The convergence is slow. When you're young, when you have fewer experiences to average over, each individual event weighs heavily. Every failure feels catastrophic because you don't yet have enough data points to see the larger pattern.
 
-But as you accumulate more experiences, more observations, more chances to see yourself in different contexts—the averaging starts to work. The pattern begins to emerge. Individual fluctuations matter less because you can see them in context of the larger distribution.
+But as you accumulate more experiences, more observations, more chances to see yourself in different contexts — the averaging starts to work. The pattern begins to emerge. Individual fluctuations matter less because you can see them in context of the larger distribution.
 
 Maybe that's what maturity is: reaching a large enough $n$ that convergence begins. Not that you stop having flaws or struggles, but that you can see them as variance around a mean rather than as fundamental truths about who you are.
 
@@ -150,10 +150,10 @@ The theorem offers a framework for something we intuitively sense but struggle t
 
 You cannot get to normality without variance. You cannot reach the limit without the individual fluctuations. The beauty of the bell curve emerges from the chaos of the individual observations.
 
-When someone tells you *you're okay*, they might mean you're not as bad as you think. But the CLT says something stronger: you're **normal**, in the most profound sense. You're exactly what you should be—a bounded random variable contributing to a larger pattern, a single term in a sum that converges to something stable and predictable and, in its way, beautiful.
+When someone tells you *you're okay*, they might mean you're not as bad as you think. But the CLT says something stronger: you're **normal**, in the most profound sense. You're exactly what you should be — a bounded random variable contributing to a larger pattern, a single term in a sum that converges to something stable and predictable and, in its way, beautiful.
 
 The Central Limit Theorem isn't just about probability distributions. It's about the mathematics of being human in a world that demands perfection while being fundamentally built from imperfection.
 
-> We must imagine Sisyphus happy. The random variables will converge—the mathematics guarantees it. And it's going to be okay.
+> We must imagine Sisyphus happy. The random variables will converge — the mathematics guarantees it. And it's going to be okay.
 
 **You are okay.**
