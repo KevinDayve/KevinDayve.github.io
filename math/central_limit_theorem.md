@@ -1,4 +1,8 @@
-# On Imperfection, Normality, and Why You're Okay
+---
+layout: default
+title: On Imperfection, Normality, and Why You're Okay
+permalink: /math/central_limit_theorem
+---
 
 The **Central Limit Theorem** is one of those mathematical results that feels almost magical when you first encounter it properly. Not the mechanical definition you memorise for exams, but what it actually means about the world and about us.
 
@@ -107,10 +111,6 @@ This has implications for how we think about ourselves. When you focus on your p
 The mathematics says: sums converge to normal. Your particular configuration of flaws, when you step back and see yourself in the aggregate, places you somewhere on a distribution that encompasses everyone. You're not an outlier. You can't be, because the human distribution is itself the result of summing countless individual variations.
 
 To be fair, the theorem doesn't say *you're perfect*. It says something more profound: you're **normal**, in the most literal mathematical sense. And normal is exactly where the bulk of the distribution lives.
-
----
-
-## Literature and Philosophy: Variance and Humanity
 
 Dostoevsky's novels are full of characters who try to eliminate their variance—to become perfectly rational, perfectly good, perfectly controlled. Raskolnikov tries to be a superman above moral law and ends up a murderer haunted by guilt. The Grand Inquisitor tries to perfect humanity and ends up imprisoning Christ himself. Prince Myshkin believes he can be perfectly good and ends up causing more harm than help, unable to function in a world that requires accepting one's own capacity for imperfection.
 
