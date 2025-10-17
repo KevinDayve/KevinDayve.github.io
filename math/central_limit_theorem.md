@@ -20,7 +20,7 @@ The formal proof of the Central Limit Theorem feels almost anti-climatic given h
 * Common mean $\mu$ and finite variance $\sigma^2$
 * These variables are independent
 
-**The Question:** What happens to the average $\bar{X}*n = \frac{1}{n}\sum*{i=1}^{n} Y_i$ as $n$ gets large?
+**The Question:** What happens to the average $\(\bar{X}_n = \frac{1}{n}\sum_{i=1}^n Y_i\)$ as $\(n\)$ gets large?
 
 The answer is the **Central Limit Theorem**. Let me work through the proof using **moment generating functions**. It's a bit involved, but stay with me—the machinery matters.
 
@@ -44,7 +44,7 @@ $$
 M_Y\left(\frac{t}{\sqrt{n}}\right) = \sum_{k=0}^{\infty} M_Y^{(k)}(0) \frac{(t/\sqrt{n})^k}{k!}
 $$
 
-where $$M_Y^{(k)}(0) = \frac{d^k}{dt^k}M_Y(t)|_{t=0}$$. Since $$Y^*$$ has mean 0 and variance 1:
+where $\(M_Y^{(k)}(0) = \left.\frac{d^k}{dt^k}M_Y(t)\right|_{t=0}.\)$ Since $\(Y^*\)$ has mean 0 and variance 1,
 
 * $M_Y^{(0)}(0) = 1$
 * $M_Y^{(1)}(0) = 0$
