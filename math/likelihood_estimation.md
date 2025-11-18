@@ -148,9 +148,8 @@ Example:In Section 3.3.2, we derived the MLE for the variance $\sigma^2$ as $\ha
 
 $$\hat{\sigma} = \sqrt{\hat{\sigma}^2} = \sqrt{\frac{1}{n}\sum_{i=1}^n (X_i - \bar{X})^2}$$
 
-Theoretical Justification:
-
-This result is derived by defining an "induced likelihood" function, $L^*(\eta)$, for the transformed parameter $\eta = \tau(\theta)$. $L^*(\eta)$ is defined as the supremum of the original likelihood over the set of $\theta$ values that map to $\eta$. Maximizing this induced likelihood yields $\hat{\eta} = \tau(\hat{\theta})$
+Theoretical Justification: 
+This result is derived by defining an "induced likelihood" function, $L^*(\eta)$, for the transformed parameter $\eta = \tau(\theta)$. The function $L^*(\eta)$ is defined as the supremum of the original likelihood over the set of $\theta$ values that map to $\eta$. Maximizing this induced likelihood yields $\hat{\eta} = \tau(\hat{\theta})$.
 
 ### 4.2 Asymptotic Properties
 
@@ -171,9 +170,9 @@ To understand "efficiency," we must quantify the limit of precision for any esti
 
 First, recall the Score Function, $S(\theta \mid \mathbf{x}) = \frac{\partial}{\partial \theta} \log f(\mathbf{x}\mid\theta)$.The Fisher Information, denoted $I(\theta)$, is defined as the variance of the score function:
 
-$$I(\theta) = E_\theta \left[ \left( \frac{\partial}{\partial \theta} \log f(\mathbf{X}\mid\theta) \right)^2 \right] = \text{Var}(S(\theta \mid \mathbf{X}))
+$$I(\theta) = E_\theta \left[ \left( \frac{\partial}{\partial \theta} \log f(\mathbf{X}\mid\theta) \right)^2 \right] = \text{Var}(S(\theta \mid \mathbf{X}))$$
 
-$$Note: Under standard regularity conditions (specifically, if we can differentiate twice under the integral), the Fisher Information can also be computed as the expected negative curvature (Hessian):
+Note: Under standard regularity conditions (specifically, if we can differentiate twice under the integral), the Fisher Information can also be computed as the expected negative curvature (Hessian):
 
 $$I(\theta) = -E_\theta \left[ \frac{\partial^2}{\partial \theta^2} \log f(\mathbf{X}\mid\theta) \right]$$
 
@@ -307,7 +306,11 @@ $$\ell(\theta) = -\frac{n}{2}\log(2\pi\sigma^2) - \frac{1}{2\sigma^2} \sum_{i=1}
 
 ignoring constant terms with respect to $\theta$, maximizing $\ell(\theta)$ is equivalent to maximizing:
 
-$$-\sum_{i=1}^n (y_i - f(x_i; \theta))^2$$which is equivalent to minimizing:$$J(\theta) = \sum_{i=1}^n (y_i - f(x_i; \theta))^2$$
+$$-\sum_{i=1}^n (y_i - f(x_i; \theta))^2$$
+
+which is equivalent to minimizing:
+
+$$J(\theta) = \sum_{i=1}^n (y_i - f(x_i; \theta))^2$$
 
 This demonstrates that minimizing the Mean Squared Error (MSE) is formally equivalent to performing MLE under the assumption of Gaussian noise.
 
@@ -337,7 +340,7 @@ where $\eta$ is the learning rate. (In ML, we typically use Gradient Descent on 
 2. Newton-Raphson Method. 
 This second-order method utilizes the curvature of the likelihood surface to converge faster.$$\theta^{(t+1)} = \theta^{(t)} - [H(\theta^{(t)})]^{-1} \nabla_\theta \ell(\theta^{(t)})$$
 
-where $H$ is the Hessian matrix of second derivatives.Recalling Section 4.3, since $E[-H(\theta)] = I(\theta)$ (Fisher Information), this method effectively scales the step size by the inverse of the Fisher Information. This variant is known as Fisher Scoring.
+where $H$ is the Hessian matrix of second derivatives. Recalling Section 4.3, since $E[-H(\theta)] = I(\theta)$ (Fisher Information), this method effectively scales the step size by the inverse of the Fisher Information. This variant is known as Fisher Scoring.
 
 ## 7. Conclusion
 The transition from observing data to inferring the underlying mechanisms of the world is the central challenge of statistics. As we have just seen, the Principle of Maximum Likelihood provides is a rigorously optimal framework for this task.
