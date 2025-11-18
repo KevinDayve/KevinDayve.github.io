@@ -57,7 +57,7 @@ This property ensures that optimizing the transformed function yields the correc
 
 2. **Analytical Simplification**: Differentiation is required to locate maxima. The derivative of a product (required for $L$) becomes practically unmanageable as $n$ increases. By converting the product to a sum, the log-likelihood allows for term-by-term differentiation, significantly simplifying the calculation of the score function (the gradient with respect to $\theta$).
 
-3. Numerical StabilityProbabilities are values in the interval $[0,1]$. The product of many such values rapidly approaches zero, leading to arithmetic underflow in computational systems. The log-likelihood transforms these small products into a sum of negative numbers, maintaining numerical precision during optimization.
+3. **Numerical Stability**: Probabilities are values in the interval $[0,1]$. The product of many such values rapidly approaches zero, leading to arithmetic underflow in computational systems. The log-likelihood transforms these small products into a sum of negative numbers, maintaining numerical precision during optimization.
 
 ## 3. The Principle of Maximum Likelihood Estimation
 Having established the log-likelihood function $\ell(\theta \mid \mathbf{x})$, we now define the primary method for parameter estimation.
@@ -83,7 +83,9 @@ The Score Function, $S(\theta)$, is the gradient of the log-likelihood with resp
 
 3. Solve the Likelihood Equation:
 
-Set the score function to zero to identify critical points. The solution to this equation is the candidate for the MLE:$$S(\theta) = 0$$
+Set the score function to zero to identify critical points. The solution to this equation is the candidate for the MLE:
+
+$$S(\theta) = 0$$
 
 **Note** (Second-Order Condition): To verify that the solution corresponds to a local maximum rather than a minimum or saddle point, one must verify that the second derivative (the Hessian matrix in the multivariate case) is negative definite:
 
@@ -149,7 +151,9 @@ Example:In Section 3.3.2, we derived the MLE for the variance $\sigma^2$ as $\ha
 $$\hat{\sigma} = \sqrt{\hat{\sigma}^2} = \sqrt{\frac{1}{n}\sum_{i=1}^n (X_i - \bar{X})^2}$$
 
 Theoretical Justification: 
-This result is derived by defining an "induced likelihood" function, $L^*(\eta)$, for the transformed parameter $\eta = \tau(\theta)$. The function $L^*(\eta)$ is defined as the supremum of the original likelihood over the set of $\theta$ values that map to $\eta$. Maximizing this induced likelihood yields $\hat{\eta} = \tau(\hat{\theta})$.
+This result is derived by defining an "induced likelihood" function, $$L^*(\eta)$$, for the transformed parameter $$\eta = \tau(\theta)$$. The function $$L^*(\eta)$$ is defined as the supremum of the original likelihood over the set of $\theta$ values that map to $\eta$. Maximizing this induced likelihood yields 
+
+$$\hat{\eta} = \tau(\hat{\theta})$$.
 
 ### 4.2 Asymptotic Properties
 
