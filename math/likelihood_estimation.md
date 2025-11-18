@@ -2,6 +2,7 @@
 layout: default
 title: A (hopefully) rigorous introduction to maximum likelihood estimation
 permalink: /math/likelihood-estimation
+math: true
 ---
 
 
