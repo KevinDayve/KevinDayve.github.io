@@ -13,52 +13,52 @@ Statistical inference is fundamentally the art of reasoning from observed data b
 ### 1.1 Inferring parameters
 The standard setup for estimation is defined as follows:
 * We observe a set of $n$ independent and identically distributed (iid) data points, $\mathbf{X} = (X_1, \ldots, X_n)$.
-* We assume this data was generated from an unknown probability distribution belonging to a specific family $f(x | \theta)$.
+* We assume this data was generated from an unknown probability distribution belonging to a specific family $f(x \mid \theta)$.
 * This family is indexed by a set of parameters, $\theta$, which represents the unknown "truth" governing the process.
 
 For example, in a sequence of coin flips, $f$ may represent the Bernoulli distribution, where $\theta$ corresponds to the unknown probability of heads, $p$.
 
 ### 1.2 Probability vs Inference
-To understand likelihood, one must distinguish between two opposing inquiries regarding the function $f(x | \theta)$:
+To understand likelihood, one must distinguish between two opposing inquiries regarding the function $f(x \mid \theta)$:
 
-1. The Forward Problem (Probability)If the parameter $\theta$ is known, what data behaviors do we expect?Query: "Given a fair coin ($p=0.5$), what is the probability of observing 7 heads in 10 flips?"Here, we treat $P(\mathbf{x} | \theta)$ as a function of the data $\mathbf{x}$, with $\theta$ held fixed.
+1. The Forward Problem (Probability)If the parameter $\theta$ is known, what data behaviors do we expect?Query: "Given a fair coin ($p=0.5$), what is the probability of observing 7 heads in 10 flips?"Here, we treat $P(\mathbf{x} \mid \theta)$ as a function of the data $\mathbf{x}$, with $\theta$ held fixed.
 
 2. The Backward Problem (Inference)If the data $\mathbf{x}$ is observed, what parameter $\theta$ is the most plausible cause?Query: "Given that 7 heads were observed in 10 flips, what is the most reasonable estimate for $p$?"This requires viewing the relationship from the perspective of $\theta$, treating the data $\mathbf{x}$ as fixed.
 
 ### 1.3 Formal definition
-The Likelihood Function, denoted $L(\theta | \mathbf{x})$, is the formal tool used to address the inference problem. It is defined as the joint probability (or probability density) of the observed data, viewed strictly as a function of the parameter $\theta$.
+The Likelihood Function, denoted $L(\theta \mid \mathbf{x})$, is the formal tool used to address the inference problem. It is defined as the joint probability (or probability density) of the observed data, viewed strictly as a function of the parameter $\theta$.
 
-For an iid sample $\mathbf{X} = (X_1, \ldots, X_n)$ drawn from a density $f(x|\theta)$, the likelihood function is given by:
+For an iid sample $\mathbf{X} = (X_1, \ldots, X_n)$ drawn from a density $f(x\mid\theta)$, the likelihood function is given by:
     
-$$L(\theta | \mathbf{x}) = f(\mathbf{x} | \theta) = \prod_{i=1}^n f(x_i | \theta)$$
+$$L(\theta \mid \mathbf{x}) = f(\mathbf{x} \mid \theta) = \prod_{i=1}^n f(x_i \mid \theta)$$
 
-Crucial Distinction:While $f(\mathbf{x} | \theta)$ and $L(\theta | \mathbf{x})$ are represented by the same mathematical expression, their interpretations differ significantly based on the variable of interest:As a Probability Density: 
-* When $\theta$ is fixed, $f(\mathbf{x} | \theta)$ is a function of $\mathbf{x}$ and sums (or integrates) to 1 over the sample space.
-* As a Likelihood: When $\mathbf{x}$ is fixed, $L(\theta | \mathbf{x})$ is a function of $\theta$. Note that $L(\theta | \mathbf{x})$ does not necessarily integrate to 1 over the parameter space $\Theta$.
+Crucial Distinction:While $f(\mathbf{x} \mid \theta)$ and $L(\theta \mid \mathbf{x})$ are represented by the same mathematical expression, their interpretations differ significantly based on the variable of interest:As a Probability Density: 
+* When $\theta$ is fixed, $f(\mathbf{x} \mid \theta)$ is a function of $\mathbf{x}$ and sums (or integrates) to 1 over the sample space.
+* As a Likelihood: When $\mathbf{x}$ is fixed, $L(\theta \mid \mathbf{x})$ is a function of $\theta$. Note that $L(\theta \mid \mathbf{x})$ does not necessarily integrate to 1 over the parameter space $\Theta$.
 
-The likelihood function provides a measure of plausibility. If $L(\theta_A | \mathbf{x}) > L(\theta_B | \mathbf{x})$, the observed data $\mathbf{x}$ provides greater support for the parameter value $\theta_A$ than for $\theta_B$
+The likelihood function provides a measure of plausibility. If $L(\theta_A \mid \mathbf{x}) > L(\theta_B \mid \mathbf{x})$, the observed data $\mathbf{x}$ provides greater support for the parameter value $\theta_A$ than for $\theta_B$
 
 
 ## 2. The Log-Likelihood Function
-While the likelihood function $L(\theta | \mathbf{x})$ serves as the conceptual foundation for parameter estimation, it is often analytically intractable. In practice, inference is almost exclusively conducted using the Log-Likelihood Function, denoted as $\ell(\theta | \mathbf{x})$
+While the likelihood function $L(\theta \mid \mathbf{x})$ serves as the conceptual foundation for parameter estimation, it is often analytically intractable. In practice, inference is almost exclusively conducted using the Log-Likelihood Function, denoted as $\ell(\theta \mid \mathbf{x})$
 
 ### 2.1 Definition and Transformation
 
 The log-likelihood function is defined as the natural logarithm of the likelihood function. For a sample of $n$ iid observations, the transformation converts the product of densities into a summation:
 
-$$\ell(\theta | \mathbf{x}) = \log L(\theta | \mathbf{x}) = \log \left( \prod_{i=1}^n f(x_i | \theta) \right) = \sum_{i=1}^n \log f(x_i | \theta)$$
+$$\ell(\theta \mid \mathbf{x}) = \log L(\theta \mid \mathbf{x}) = \log \left( \prod_{i=1}^n f(x_i \mid \theta) \right) = \sum_{i=1}^n \log f(x_i \mid \theta)$$
 
 ### 2.2 Why bother with the `log`?
-The transition from $L(\theta | \mathbf{x})$ to $\ell(\theta | \mathbf{x})$ is not merely a matter of convenience; it is motivated by three distinct mathematical and computational properties:
+The transition from $L(\theta \mid \mathbf{x})$ to $\ell(\theta \mid \mathbf{x})$ is not merely a matter of convenience; it is motivated by three distinct mathematical and computational properties:
 
-1. Monotonicity of the LogarithmThe natural logarithm is a strictly monotonically increasing function. That is, for any $u, v > 0$, if $u > v$, then $\log(u) > \log(v)$. Consequently, the value of $\theta$ that maximizes $L(\theta | \mathbf{x})$ is identical to the value that maximizes $\ell(\theta | \mathbf{x})$.$$\arg \max_{\theta} L(\theta | \mathbf{x}) = \arg \max_{\theta} \ell(\theta | \mathbf{x})$$This property ensures that optimizing the transformed function yields the correct parameter estimate.
+1. Monotonicity of the LogarithmThe natural logarithm is a strictly monotonically increasing function. That is, for any $u, v > 0$, if $u > v$, then $\log(u) > \log(v)$. Consequently, the value of $\theta$ that maximizes $L(\theta \mid \mathbf{x})$ is identical to the value that maximizes $\ell(\theta \mid \mathbf{x})$.$$\arg \max_{\theta} L(\theta \mid \mathbf{x}) = \arg \max_{\theta} \ell(\theta \mid \mathbf{x})$$This property ensures that optimizing the transformed function yields the correct parameter estimate.
 
 2. Analytical SimplificationDifferentiation is required to locate maxima. The derivative of a product (required for $L$) becomes practically unmanageable as $n$ increases. By converting the product to a sum, the log-likelihood allows for term-by-term differentiation, significantly simplifying the calculation of the score function (the gradient with respect to $\theta$).
 
 3. Numerical StabilityProbabilities are values in the interval $[0,1]$. The product of many such values rapidly approaches zero, leading to arithmetic underflow in computational systems. The log-likelihood transforms these small products into a sum of negative numbers, maintaining numerical precision during optimization.
 
 ## 3. The Principle of Maximum Likelihood Estimation
-Having established the log-likelihood function $\ell(\theta | \mathbf{x})$, we now define the primary method for parameter estimation.
+Having established the log-likelihood function $\ell(\theta \mid \mathbf{x})$, we now define the primary method for parameter estimation.
 
 ### 3.1 The Maximum Likelihood Estimator
 
@@ -66,20 +66,20 @@ The Maximum Likelihood Estimator (MLE), denoted by $\hat{\theta}$, is defined as
 
 Formally, the MLE is the solution to the maximization problem:
 
-$$\hat{\theta} = \arg \max_{\theta \in \Theta} \ell(\theta | \mathbf{x})$$
+$$\hat{\theta} = \arg \max_{\theta \in \Theta} \ell(\theta \mid \mathbf{x})$$
 
 Intuitively, $\hat{\theta}$ represents the parameter value that renders the observed data most plausible
 
 ### 3.2 How to Derive?
 For models satisfying regularity conditions, more specifically, where the log-likelihood is differentiable and the support of the distribution does not depend on $\theta$ (we'll talk about these shortly), the MLE is found using standard calculus techniques
 
-1. Form the Log-Likelihood:Construct $\ell(\theta | \mathbf{x}) = \sum_{i=1}^n \log f(x_i | \theta)$.
-2. Calculate the Score Function:The Score Function, $S(\theta)$, is the gradient of the log-likelihood with respect to the parameter $\theta$:$$S(\theta) = \nabla_\theta \ell(\theta | \mathbf{x}) = \frac{\partial}{\partial \theta} \ell(\theta | \mathbf{x})$$
+1. Form the Log-Likelihood:Construct $\ell(\theta \mid \mathbf{x}) = \sum_{i=1}^n \log f(x_i \mid \theta)$.
+2. Calculate the Score Function:The Score Function, $S(\theta)$, is the gradient of the log-likelihood with respect to the parameter $\theta$:$$S(\theta) = \nabla_\theta \ell(\theta \mid \mathbf{x}) = \frac{\partial}{\partial \theta} \ell(\theta \mid \mathbf{x})$$
 3. Solve the Likelihood Equation:Set the score function to zero to identify critical points. The solution to this equation is the candidate for the MLE:$$S(\theta) = 0$$
 
 Note (Second-Order Condition): To verify that the solution corresponds to a local maximum rather than a minimum or saddle point, one must verify that the second derivative (the Hessian matrix in the multivariate case) is negative definite:
 
-$$\frac{\partial^2}{\partial \theta^2} \ell(\theta | \mathbf{x}) < 0$$
+$$\frac{\partial^2}{\partial \theta^2} \ell(\theta \mid \mathbf{x}) < 0$$
 
 ### 3.3 Canonical examples (You are urged to attempt these yourself)
 
@@ -87,12 +87,12 @@ $$\frac{\partial^2}{\partial \theta^2} \ell(\theta | \mathbf{x}) < 0$$
 
 Consider an iid sample $X_1, \ldots, X_n$ from a Bernoulli distribution with parameter $p$, where $P(X=1) = p$ and $P(X=0) = 1-p$. We seek the MLE $\hat{p}$.
 
-The probability mass function is $f(x|p) = p^x(1-p)^{1-x}$ for $x \in \{0, 1\}$.
+The probability mass function is $f(x\midp) = p^x(1-p)^{1-x}$ for $x \in \{0, 1\}$.
 
 The log-likelihood for the full sample is:
-$$\ell(p | \mathbf{x}) = \sum_{i=1}^n \left[ x_i \log p + (1-x_i) \log(1-p) \right]$$
+$$\ell(p \mid \mathbf{x}) = \sum_{i=1}^n \left[ x_i \log p + (1-x_i) \log(1-p) \right]$$
 
-Let $y = \sum_{i=1}^n x_i$ denote the total number of successes. The expression simplifies to:$$\ell(p | \mathbf{x}) = y \log p + (n-y) \log(1-p)$$
+Let $y = \sum_{i=1}^n x_i$ denote the total number of successes. The expression simplifies to:$$\ell(p \mid \mathbf{x}) = y \log p + (n-y) \log(1-p)$$
 
 Differentiating with respect to $p$ yields the score function:$$S(p) = \frac{\partial \ell}{\partial p} = \frac{y}{p} - \frac{n-y}{1-p}$$Setting $S(p) = 0$ and solving for $p$:
 
@@ -156,17 +156,17 @@ To understand "efficiency," we must quantify the limit of precision for any esti
 
 ### 4.3.1. Preliminary: The Score Function and Fisher Information
 
-First, recall the Score Function, $S(\theta | \mathbf{x}) = \frac{\partial}{\partial \theta} \log f(\mathbf{x}|\theta)$.The Fisher Information, denoted $I(\theta)$, is defined as the variance of the score function:
+First, recall the Score Function, $S(\theta \mid \mathbf{x}) = \frac{\partial}{\partial \theta} \log f(\mathbf{x}\mid\theta)$.The Fisher Information, denoted $I(\theta)$, is defined as the variance of the score function:
 
-$$I(\theta) = E_\theta \left[ \left( \frac{\partial}{\partial \theta} \log f(\mathbf{X}|\theta) \right)^2 \right] = \text{Var}(S(\theta | \mathbf{X}))
+$$I(\theta) = E_\theta \left[ \left( \frac{\partial}{\partial \theta} \log f(\mathbf{X}\mid\theta) \right)^2 \right] = \text{Var}(S(\theta \mid \mathbf{X}))
 
 $$Note: Under standard regularity conditions (specifically, if we can differentiate twice under the integral), the Fisher Information can also be computed as the expected negative curvature (Hessian):
 
-$$I(\theta) = -E_\theta \left[ \frac{\partial^2}{\partial \theta^2} \log f(\mathbf{X}|\theta) \right]$$
+$$I(\theta) = -E_\theta \left[ \frac{\partial^2}{\partial \theta^2} \log f(\mathbf{X}\mid\theta) \right]$$
 
 ### 4.3.2. The Proof (Cramér-Rao Inequality):
 
-Let $X_1, \ldots, X_n$ be a sample with joint pdf $f(\mathbf{x} | \theta)$, and let $W(\mathbf{X}) = W(X_1, \ldots, X_n)$ be any estimator with finite variance.Under regularity conditions that allow the interchange of differentiation and integration, the variance of $W(\mathbf{X})$ satisfies:
+Let $X_1, \ldots, X_n$ be a sample with joint pdf $f(\mathbf{x} \mid \theta)$, and let $W(\mathbf{X}) = W(X_1, \ldots, X_n)$ be any estimator with finite variance.Under regularity conditions that allow the interchange of differentiation and integration, the variance of $W(\mathbf{X})$ satisfies:
 
 $$\text{Var}(W(\mathbf{X})) \ge \frac{\left( \frac{d}{d\theta} E_\theta[W(\mathbf{X})] \right)^2}{I(\theta)}$$
 
@@ -174,29 +174,29 @@ In the specific case where $W(\mathbf{X})$ is an unbiased estimator of $\theta$ 
 
 $$\text{Var}(W(\mathbf{X})) \ge \frac{1}{I(\theta)}$$Proof:The proof relies on the covariance between the estimator $W$ and the score function $S$.
 
-Step 1: First, observe that the expected value of the score function is zero:$$E[S(\theta|\mathbf{X})] = \int \frac{\partial \log f(\mathbf{x}|\theta)}{\partial \theta} f(\mathbf{x}|\theta) \, d\mathbf{x} = \int \frac{1}{f(\mathbf{x}|\theta)} \frac{\partial f(\mathbf{x}|\theta)}{\partial \theta} f(\mathbf{x}|\theta) \, d\mathbf{x} = \int \frac{\partial f(\mathbf{x}|\theta)}{\partial \theta} \, d\mathbf{x}$$
+Step 1: First, observe that the expected value of the score function is zero:$$E[S(\theta\mid\mathbf{X})] = \int \frac{\partial \log f(\mathbf{x}\mid\theta)}{\partial \theta} f(\mathbf{x}\mid\theta) \, d\mathbf{x} = \int \frac{1}{f(\mathbf{x}\mid\theta)} \frac{\partial f(\mathbf{x}\mid\theta)}{\partial \theta} f(\mathbf{x}\mid\theta) \, d\mathbf{x} = \int \frac{\partial f(\mathbf{x}\mid\theta)}{\partial \theta} \, d\mathbf{x}$$
 
 Assuming we can swap the derivative and integral (a strict regularity condition):
 
-$$= \frac{d}{d\theta} \int f(\mathbf{x}|\theta) \, d\mathbf{x} = \frac{d}{d\theta}(1) = 0$$
+$$= \frac{d}{d\theta} \int f(\mathbf{x}\mid\theta) \, d\mathbf{x} = \frac{d}{d\theta}(1) = 0$$
 
 Step 2: Covariance of the Estimator and the Score
 
-Consider the covariance between the estimator $W(\mathbf{X})$ and the score $S(\theta|\mathbf{X})$. Since $E[S]=0$, the covariance is simply the expectation of their product:$$\text{Cov}(W, S) = E[W(\mathbf{X}) S(\theta|\mathbf{X})] - E[W]E[S] = E[W(\mathbf{X}) S(\theta|\mathbf{X})]$$
+Consider the covariance between the estimator $W(\mathbf{X})$ and the score $S(\theta\mid\mathbf{X})$. Since $E[S]=0$, the covariance is simply the expectation of their product:$$\text{Cov}(W, S) = E[W(\mathbf{X}) S(\theta\mid\mathbf{X})] - E[W]E[S] = E[W(\mathbf{X}) S(\theta\mid\mathbf{X})]$$
 
 Expanding the expectation:
 
-$$E[W S] = \int W(\mathbf{x}) \left( \frac{\partial}{\partial \theta} \log f(\mathbf{x}|\theta) \right) f(\mathbf{x}|\theta) \, d\mathbf{x}$$
+$$E[W S] = \int W(\mathbf{x}) \left( \frac{\partial}{\partial \theta} \log f(\mathbf{x}\mid\theta) \right) f(\mathbf{x}\mid\theta) \, d\mathbf{x}$$
 
 Applying the "Log-Derivative Trick" (multiplying and dividing by the density):
 
-$$\frac{\partial}{\partial \theta} \log f(\mathbf{x}|\theta) = \frac{1}{f(\mathbf{x}|\theta)} \frac{\partial f(\mathbf{x}|\theta)}{\partial \theta}$$
+$$\frac{\partial}{\partial \theta} \log f(\mathbf{x}\mid\theta) = \frac{1}{f(\mathbf{x}\mid\theta)} \frac{\partial f(\mathbf{x}\mid\theta)}{\partial \theta}$$
 
-Substituting this back into the integral:$$E[W S] = \int W(\mathbf{x}) \left[ \frac{1}{f(\mathbf{x}|\theta)} \frac{\partial f(\mathbf{x}|\theta)}{\partial \theta} \right] f(\mathbf{x}|\theta) \, d\mathbf{x} = \int W(\mathbf{x}) \frac{\partial f(\mathbf{x}|\theta)}{\partial \theta} \, d\mathbf{x}$$
+Substituting this back into the integral:$$E[W S] = \int W(\mathbf{x}) \left[ \frac{1}{f(\mathbf{x}\mid\theta)} \frac{\partial f(\mathbf{x}\mid\theta)}{\partial \theta} \right] f(\mathbf{x}\mid\theta) \, d\mathbf{x} = \int W(\mathbf{x}) \frac{\partial f(\mathbf{x}\mid\theta)}{\partial \theta} \, d\mathbf{x}$$
 
 Again, utilizing the regularity condition to swap the derivative and integral:
 
-$$E[W S] = \frac{d}{d\theta} \int W(\mathbf{x}) f(\mathbf{x}|\theta) \, d\mathbf{x} = \frac{d}{d\theta} E_\theta[W(\mathbf{X})]$$
+$$E[W S] = \frac{d}{d\theta} \int W(\mathbf{x}) f(\mathbf{x}\mid\theta) \, d\mathbf{x} = \frac{d}{d\theta} E_\theta[W(\mathbf{X})]$$
 
 If $W$ is an unbiased estimator of $\theta$, then $E[W] = \theta$, and thus $\frac{d}{d\theta}(\theta) = 1$.
 
@@ -214,17 +214,17 @@ $$\text{Var}(W) \ge \frac{1}{I(\theta)}$$$\blacksquare$
 
 ### 4.3.3. The IID Case
 
-The theorem above applies to the joint density $f(\mathbf{x}|\theta)$. If the data $\mathbf{X} = (X_1, \ldots, X_n)$ are independent and identically distributed (iid), the Fisher Information of the entire sample, $I_n(\theta)$, is simply $n$ times the Fisher Information of a single observation, $I_1(\theta)$.
+The theorem above applies to the joint density $f(\mathbf{x}\mid\theta)$. If the data $\mathbf{X} = (X_1, \ldots, X_n)$ are independent and identically distributed (iid), the Fisher Information of the entire sample, $I_n(\theta)$, is simply $n$ times the Fisher Information of a single observation, $I_1(\theta)$.
 
 Thus, for iid samples, the variance of any unbiased estimator is bounded by:$$\text{Var}(W) \ge \frac{1}{n I_1(\theta)}$$
 
 ## 5. Challenges and "Non-regular" cases
 
-The derivation of the MLE via the score function $S(\theta) = 0$ relies heavily on a set of Regularity Conditions. The most critical of these conditions requires that the support of the distribution—the set of values for which $f(x|\theta) > 0$ - does not depend on the parameter $\theta$. When the domain of the data is dependent on the parameter, the likelihood function often exhibits discontinuities. In such cases, the likelihood function is not differentiable everywhere, and the maximum must be found through logical inspection rather than calculus.
+The derivation of the MLE via the score function $S(\theta) = 0$ relies heavily on a set of Regularity Conditions. The most critical of these conditions requires that the support of the distribution—the set of values for which $f(x\mid\theta) > 0$ - does not depend on the parameter $\theta$. When the domain of the data is dependent on the parameter, the likelihood function often exhibits discontinuities. In such cases, the likelihood function is not differentiable everywhere, and the maximum must be found through logical inspection rather than calculus.
 
 ### 5.1 When Calculus doesn't work
 
-Recall that finding the MLE typically involves solving $\frac{\partial}{\partial \theta} \ell(\theta | \mathbf{x}) = 0$. This method implicitly assumes that the maximum lies in the interior of the parameter space and that the function is smooth.If the support of $X$ depends on $\theta$, the parameter $\theta$ usually acts as a hard boundary (a truncation point). The likelihood function becomes strictly increasing or decreasing up to this boundary, meaning the derivative will never be zero. The maximum occurs at the boundary itself.
+Recall that finding the MLE typically involves solving $\frac{\partial}{\partial \theta} \ell(\theta \mid \mathbf{x}) = 0$. This method implicitly assumes that the maximum lies in the interior of the parameter space and that the function is smooth.If the support of $X$ depends on $\theta$, the parameter $\theta$ usually acts as a hard boundary (a truncation point). The likelihood function becomes strictly increasing or decreasing up to this boundary, meaning the derivative will never be zero. The maximum occurs at the boundary itself.
 
 ### 5.2 A canonical example (Uniform distribution)
 
@@ -232,19 +232,19 @@ Consider an iid sample $X_1, \ldots, X_n$ drawn from a Uniform distribution on t
 
 The Likelihood FunctionThe probability density function for a single observation is:
 
-$$f(x | \theta) = \begin{cases} \frac{1}{\theta} & \text{if } 0 \le x \le \theta \\ 0 & \text{otherwise} \end{cases}$$
+$$f(x \mid \theta) = \begin{cases} \frac{1}{\theta} & \text{if } 0 \le x \le \theta \\ 0 & \text{otherwise} \end{cases}$$
 
 Using the indicator function notation $I(\cdot)$, this can be written as:
 
-$$f(x | \theta) = \frac{1}{\theta} I(0 \le x \le \theta)$$
+$$f(x \mid \theta) = \frac{1}{\theta} I(0 \le x \le \theta)$$
 
-The likelihood function is the product of these densities:$$L(\theta | \mathbf{x}) = \prod_{i=1}^n \frac{1}{\theta} I(0 \le x_i \le \theta) = \frac{1}{\theta^n} \prod_{i=1}^n I(0 \le x_i \le \theta)$$
+The likelihood function is the product of these densities:$$L(\theta \mid \mathbf{x}) = \prod_{i=1}^n \frac{1}{\theta} I(0 \le x_i \le \theta) = \frac{1}{\theta^n} \prod_{i=1}^n I(0 \le x_i \le \theta)$$
 
 The product of the indicator functions $\prod I(0 \le x_i \le \theta)$ is equal to 1 if and only if all observed values $x_i$ are less than or equal to $\theta$. This is equivalent to saying that the maximum observed value must be less than or equal to $\theta$.
 
 Let $X_{(n)} = \max(X_1, \ldots, X_n)$ denote the $n$-th order statistic (the sample maximum). The likelihood function simplifies to:
 
-$$L(\theta | \mathbf{x}) = \begin{cases} \frac{1}{\theta^n} & \text{if } \theta \ge x_{(n)} \\ 0 & \text{if } \theta < x_{(n)} \end{cases}$$
+$$L(\theta \mid \mathbf{x}) = \begin{cases} \frac{1}{\theta^n} & \text{if } \theta \ge x_{(n)} \\ 0 & \text{if } \theta < x_{(n)} \end{cases}$$
 
 If we attempt to take the derivative of $\ell(\theta) = -n \log \theta$, we get $-\frac{n}{\theta}$, which is always negative. This indicates that the function is strictly decreasing.
 * For $\theta < x_{(n)}$, the likelihood is exactly 0 (impossible).
@@ -262,17 +262,17 @@ The Principle of Maximum Likelihood is not merely a historical artifact of class
 
 In the frequentist framework of MLE, the parameter $\theta$ is considered a fixed, albeit unknown, constant. Bayesian statistics, conversely, treats $\theta$ as a random variable described by a prior distribution, $\pi(\theta)$.
 
-Inference is conducted on the posterior distribution, $\pi(\theta | \mathbf{x})$, computed via Bayes' Theorem:
+Inference is conducted on the posterior distribution, $\pi(\theta \mid \mathbf{x})$, computed via Bayes' Theorem:
 
-$$\pi(\theta | \mathbf{x}) = \frac{f(\mathbf{x} | \theta) \pi(\theta)}{\int f(\mathbf{x} | \theta') \pi(\theta') \, d\theta'} \propto L(\theta | \mathbf{x}) \pi(\theta)$$
+$$\pi(\theta \mid \mathbf{x}) = \frac{f(\mathbf{x} \mid \theta) \pi(\theta)}{\int f(\mathbf{x} \mid \theta') \pi(\theta') \, d\theta'} \propto L(\theta \mid \mathbf{x}) \pi(\theta)$$
 
 The Bayesian equivalent of the MLE is the Maximum A Posteriori (MAP) estimator, which selects the mode of the posterior distribution:
 
-$$\hat{\theta}_{MAP} = \arg \max_{\theta} \left[ \log L(\theta | \mathbf{x}) + \log \pi(\theta) \right]$$
+$$\hat{\theta}_{MAP} = \arg \max_{\theta} \left[ \log L(\theta \mid \mathbf{x}) + \log \pi(\theta) \right]$$
 
 Theorem (Equivalence of MLE and MAP):If the prior distribution $\pi(\theta)$ is uniform (i.e., $\pi(\theta) \propto c$ for all $\theta$ in the domain), then the MAP estimate is identical to the MLE.
 
-$$\hat{\theta}_{MAP} = \arg \max_{\theta} \log L(\theta | \mathbf{x}) = \hat{\theta}_{MLE}$$
+$$\hat{\theta}_{MAP} = \arg \max_{\theta} \log L(\theta \mid \mathbf{x}) = \hat{\theta}_{MLE}$$
 
 Thus, MLE can be viewed as a special case of Bayesian inference where one assumes a non-informative (flat) prior.
 
