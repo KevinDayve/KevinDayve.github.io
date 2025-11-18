@@ -21,9 +21,9 @@ For example, in a sequence of coin flips, $f$ may represent the Bernoulli distri
 ### 1.2 Probability vs Inference
 To understand likelihood, one must distinguish between two opposing inquiries regarding the function $f(x \mid \theta)$:
 
-1. The Forward Problem (Probability)If the parameter $\theta$ is known, what data behaviors do we expect?Query: "Given a fair coin ($p=0.5$), what is the probability of observing 7 heads in 10 flips?"Here, we treat $P(\mathbf{x} \mid \theta)$ as a function of the data $\mathbf{x}$, with $\theta$ held fixed.
+1. The Forward Problem (Probability): If the parameter $\theta$ is known, what data behaviors do we expect?Query: "Given a fair coin ($p=0.5$), what is the probability of observing 7 heads in 10 flips?"Here, we treat $P(\mathbf{x} \mid \theta)$ as a function of the data $\mathbf{x}$, with $\theta$ held fixed.
 
-2. The Backward Problem (Inference)If the data $\mathbf{x}$ is observed, what parameter $\theta$ is the most plausible cause?Query: "Given that 7 heads were observed in 10 flips, what is the most reasonable estimate for $p$?"This requires viewing the relationship from the perspective of $\theta$, treating the data $\mathbf{x}$ as fixed.
+2. The Backward Problem (Inference): If the data $\mathbf{x}$ is observed, what parameter $\theta$ is the most plausible cause?Query: "Given that 7 heads were observed in 10 flips, what is the most reasonable estimate for $p$?"This requires viewing the relationship from the perspective of $\theta$, treating the data $\mathbf{x}$ as fixed.
 
 ### 1.3 Formal definition
 The Likelihood Function, denoted $L(\theta \mid \mathbf{x})$, is the formal tool used to address the inference problem. It is defined as the joint probability (or probability density) of the observed data, viewed strictly as a function of the parameter $\theta$.
@@ -51,9 +51,11 @@ $$\ell(\theta \mid \mathbf{x}) = \log L(\theta \mid \mathbf{x}) = \log \left( \p
 ### 2.2 Why bother with the `log`?
 The transition from $L(\theta \mid \mathbf{x})$ to $\ell(\theta \mid \mathbf{x})$ is not merely a matter of convenience; it is motivated by three distinct mathematical and computational properties:
 
-1. Monotonicity of the LogarithmThe natural logarithm is a strictly monotonically increasing function. That is, for any $u, v > 0$, if $u > v$, then $\log(u) > \log(v)$. Consequently, the value of $\theta$ that maximizes $L(\theta \mid \mathbf{x})$ is identical to the value that maximizes $\ell(\theta \mid \mathbf{x})$.$$\arg \max_{\theta} L(\theta \mid \mathbf{x}) = \arg \max_{\theta} \ell(\theta \mid \mathbf{x})$$This property ensures that optimizing the transformed function yields the correct parameter estimate.
+1. **Monotonicity of the Logarithm**: The natural logarithm is a strictly monotonically increasing function. That is, for any $u, v > 0$, if $u > v$, then $\log(u) > \log(v)$. Consequently, the value of $\theta$ that maximizes $L(\theta \mid \mathbf{x})$ is identical to the value that maximizes $\ell(\theta \mid \mathbf{x})$.$$\arg \max_{\theta} L(\theta \mid \mathbf{x}) = \arg \max_{\theta} \ell(\theta \mid \mathbf{x})$$
 
-2. Analytical SimplificationDifferentiation is required to locate maxima. The derivative of a product (required for $L$) becomes practically unmanageable as $n$ increases. By converting the product to a sum, the log-likelihood allows for term-by-term differentiation, significantly simplifying the calculation of the score function (the gradient with respect to $\theta$).
+This property ensures that optimizing the transformed function yields the correct parameter estimate.
+
+2. **Analytical Simplification**: Differentiation is required to locate maxima. The derivative of a product (required for $L$) becomes practically unmanageable as $n$ increases. By converting the product to a sum, the log-likelihood allows for term-by-term differentiation, significantly simplifying the calculation of the score function (the gradient with respect to $\theta$).
 
 3. Numerical StabilityProbabilities are values in the interval $[0,1]$. The product of many such values rapidly approaches zero, leading to arithmetic underflow in computational systems. The log-likelihood transforms these small products into a sum of negative numbers, maintaining numerical precision during optimization.
 
@@ -73,11 +75,17 @@ Intuitively, $\hat{\theta}$ represents the parameter value that renders the obse
 ### 3.2 How to Derive?
 For models satisfying regularity conditions, more specifically, where the log-likelihood is differentiable and the support of the distribution does not depend on $\theta$ (we'll talk about these shortly), the MLE is found using standard calculus techniques
 
-1. Form the Log-Likelihood:Construct $\ell(\theta \mid \mathbf{x}) = \sum_{i=1}^n \log f(x_i \mid \theta)$.
-2. Calculate the Score Function:The Score Function, $S(\theta)$, is the gradient of the log-likelihood with respect to the parameter $\theta$:$$S(\theta) = \nabla_\theta \ell(\theta \mid \mathbf{x}) = \frac{\partial}{\partial \theta} \ell(\theta \mid \mathbf{x})$$
-3. Solve the Likelihood Equation:Set the score function to zero to identify critical points. The solution to this equation is the candidate for the MLE:$$S(\theta) = 0$$
+1. Form the Log-Likelihood:
+Construct $\ell(\theta \mid \mathbf{x}) = \sum_{i=1}^n \log f(x_i \mid \theta)$.
 
-Note (Second-Order Condition): To verify that the solution corresponds to a local maximum rather than a minimum or saddle point, one must verify that the second derivative (the Hessian matrix in the multivariate case) is negative definite:
+2. Calculate the Score Function:
+The Score Function, $S(\theta)$, is the gradient of the log-likelihood with respect to the parameter $\theta$:$$S(\theta) = \nabla_\theta \ell(\theta \mid \mathbf{x}) = \frac{\partial}{\partial \theta} \ell(\theta \mid \mathbf{x})$$
+
+3. Solve the Likelihood Equation:
+
+Set the score function to zero to identify critical points. The solution to this equation is the candidate for the MLE:$$S(\theta) = 0$$
+
+**Note** (Second-Order Condition): To verify that the solution corresponds to a local maximum rather than a minimum or saddle point, one must verify that the second derivative (the Hessian matrix in the multivariate case) is negative definite:
 
 $$\frac{\partial^2}{\partial \theta^2} \ell(\theta \mid \mathbf{x}) < 0$$
 
@@ -87,7 +95,7 @@ $$\frac{\partial^2}{\partial \theta^2} \ell(\theta \mid \mathbf{x}) < 0$$
 
 Consider an iid sample $X_1, \ldots, X_n$ from a Bernoulli distribution with parameter $p$, where $P(X=1) = p$ and $P(X=0) = 1-p$. We seek the MLE $\hat{p}$.
 
-The probability mass function is $f(x\midp) = p^x(1-p)^{1-x}$ for $x \in \{0, 1\}$.
+The probability mass function is $f(x \mid p) = p^x(1-p)^{1-x}$ for $x \in \{0, 1\}$.
 
 The log-likelihood for the full sample is:
 $$\ell(p \mid \mathbf{x}) = \sum_{i=1}^n \left[ x_i \log p + (1-x_i) \log(1-p) \right]$$
@@ -96,7 +104,9 @@ Let $y = \sum_{i=1}^n x_i$ denote the total number of successes. The expression 
 
 Differentiating with respect to $p$ yields the score function:$$S(p) = \frac{\partial \ell}{\partial p} = \frac{y}{p} - \frac{n-y}{1-p}$$Setting $S(p) = 0$ and solving for $p$:
 
-$$\frac{y}{p} = \frac{n-y}{1-p} \implies y(1-p) = p(n-y) \implies y = np$$$$\hat{p} = \frac{y}{n} = \bar{X}$$
+$$\frac{y}{p} = \frac{n-y}{1-p} \implies y(1-p) = p(n-y) \implies y = np$$
+
+$$\hat{p} = \frac{y}{n} = \bar{X}$$
 
 Thus, the MLE for the Bernoulli parameter is the sample mean
 
@@ -110,6 +120,7 @@ We compute the partial derivatives (score functions) for each parameter:
 1. For $\mu$:
 
 $$\frac{\partial \ell}{\partial \mu} = \frac{1}{\sigma^2} \sum_{i=1}^n (x_i - \mu)$$
+
 2. For $\sigma^2$:
 
 $$\frac{\partial \ell}{\partial (\sigma^2)} = -\frac{n}{2\sigma^2} + \frac{1}{2(\sigma^2)^2} \sum_{i=1}^n (x_i - \mu)^2$$
@@ -137,18 +148,20 @@ Example:In Section 3.3.2, we derived the MLE for the variance $\sigma^2$ as $\ha
 
 $$\hat{\sigma} = \sqrt{\hat{\sigma}^2} = \sqrt{\frac{1}{n}\sum_{i=1}^n (X_i - \bar{X})^2}$$
 
-Theoretical Justification:This result is derived by defining an "induced likelihood" function, $L^*(\eta)$, for the transformed parameter $\eta = \tau(\theta)$. $L^*(\eta)$ is defined as the supremum of the original likelihood over the set of $\theta$ values that map to $\eta$. Maximizing this induced likelihood yields $\hat{\eta} = \tau(\hat{\theta})$
+Theoretical Justification:
+
+This result is derived by defining an "induced likelihood" function, $L^*(\eta)$, for the transformed parameter $\eta = \tau(\theta)$. $L^*(\eta)$ is defined as the supremum of the original likelihood over the set of $\theta$ values that map to $\eta$. Maximizing this induced likelihood yields $\hat{\eta} = \tau(\hat{\theta})$
 
 ### 4.2 Asymptotic Properties
 
 While MLEs are not guaranteed to be unbiased for finite samples (as seen with the Normal variance estimator), they exhibit optimal behavior as the sample size $n \to \infty$.
-1. ConsistencyThe MLE is a consistent estimator. As the sample size increases, the estimator converges in probability to the true parameter value $\theta_0$.$$\hat{\theta}_n \xrightarrow{p} \theta_0 \quad \text{as} \quad n \to \infty$$
+1. **Consistency**: The MLE is a consistent estimator. As the sample size increases, the estimator converges in probability to the true parameter value $\theta_0$.$$\hat{\theta}_n \xrightarrow{p} \theta_0 \quad \text{as} \quad n \to \infty$$
 
-2. Asymptotic NormalityThe sampling distribution of the MLE converges to a Normal distribution. This property allows for the construction of approximate confidence intervals and hypothesis tests for large samples.
+2. **Asymptotic Normality**: The sampling distribution of the MLE converges to a Normal distribution. This property allows for the construction of approximate confidence intervals and hypothesis tests for large samples.
 $$\sqrt{n}(\hat{\theta}_n - \theta_0) \xrightarrow{d} N\left(0, \frac{1}{I(\theta_0)}\right)$$
 where $I(\theta_0)$ is the Fisher Information.
 
-3. Asymptotic EfficiencyAmong all consistent, asymptotically normal estimators, the MLE has the smallest possible variance. It achieves the theoretical lower bound for variance, known as the Cramér-Rao Lower Bound
+3. **Asymptotic Efficiency**: Among all consistent, asymptotically normal estimators, the MLE has the smallest possible variance. It achieves the theoretical lower bound for variance, known as the Cramér-Rao Lower Bound
 
 ### 4.3 Fisher Information and Cramer-Rao Lower Bound
 
@@ -332,7 +345,8 @@ The transition from observing data to inferring the underlying mechanisms of the
 By starting from first principles by distinguishing the forward probability from the backward likelihood, I hope that a logical foundation for estimation has been established..
 
 **Acknowledgements and Further Reading**
-The structure and rigorous approach of this guide have been heavily influenced by the seminal text "Statistical Inference" by George Casella and Roger L. Berger.
+
+The structure and rigorous approach of this guide have been heavily influenced by the seminal text "**Statistical Inference**" by George Casella and Roger L. Berger.
 
 For the reader seeking to deepen their understanding of the measure-theoretic foundations of these properties, or to explore hypothesis testing and interval estimation with equal rigor, Casella & Berger remains the definitive reference.
 
