@@ -38,11 +38,11 @@ This distinction has a name in some circles: the difference between the context 
 So what does the scratchpad actually look like?
 Suppose you want to prove that for all $n \geq 1$, $\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$.
 The scratchpad might look something like this:
-"Okay, I want to show the sum formula. Let me just check a few cases: $n=1$ gives 1, and $\frac{1 \cdot 2}{2} = 1$. Good. $n=2$ gives 3, and $\frac{2 \cdot 3}{2} = 3$. Good. So it seems true. But why? The formula is quadratic in $n$... there's probably some nice structure here. What if I write the sum forwards and backwards and add them? Gauss's trick. Then each pair adds to $n+1$, and there are $n$ pairs, giving $n(n+1)$, then divide by 2 because we doubled. That actually works. Now let me write it cleanly..."
+> "Okay, I want to show the sum formula. Let me just check a few cases: $n=1$ gives 1, and $\frac{1 \cdot 2}{2} = 1$. Good. $n=2$ gives 3, and $\frac{2 \cdot 3}{2} = 3$. Good. So it seems true. But why? The formula is quadratic in $n$... there's probably some nice structure here. What if I write the sum forwards and backwards and add them? Gauss's trick. Then each pair adds to $n+1$, and there are $n$ pairs, giving $n(n+1)$, then divide by 2 because we doubled. That actually works. Now let me write it cleanly..."
 
 The scratchpad is allowed to be wrong, speculative, and redundant. Its only job is to find the path. The proof's only job is to communicate that path, once found, as cleanly as possible.
 
-Practical advice: Before writing a single line of a formal proof, spend time on your scratchpad working backwards from your goal. Ask yourself: "What would I need to know to be one step from the conclusion?" Then ask it again of that new target. This is called backward chaining, and it is the dominant mental move in mathematical problem solving.
+**Practical advice:** Before writing a single line of a formal proof, spend time on your scratchpad working backwards from your goal. Ask yourself: "What would I need to know to be one step from the conclusion?" Then ask it again of that new target. This is called backward chaining, and it is the dominant mental move in mathematical problem solving.
 
 ---
 
@@ -56,41 +56,41 @@ It works when the hypothesis is generous — when it hands you something concret
 
 There is a certain pleasure to a clean direct proof. It feels like the mathematics is cooperating.
 
-When to go for this strategy: If the hypothesis feels like a gift — like it is already most of the way to the conclusion — accept it and go directly.
+**When to go for this strategy:** If the hypothesis feels like a gift — like it is already most of the way to the conclusion — accept it and go directly.
 
 ### 3.2 Proof by Contrapositive
 The logical fact $P \Rightarrow Q \equiv \neg Q \Rightarrow \neg P$ is elementary. What is less obvious is how frequently the contrapositive of a statement is dramatically easier to prove than the statement itself — not because the mathematics is different, but because the direction of travel is more natural.
 
-Example: Prove that if $n^2$ is even, then $n$ is even.
+**Example:** Prove that if $n^2$ is even, then $n$ is even.
 Direct proof stalls almost immediately. You have $n^2 = 2k$ and nowhere obvious to go — the step from $n^2$ back to $n$ is awkward, and square roots introduce the kind of casework that makes a proof feel like it is fighting you.
 
 The contrapositive — if $n$ is odd, then $n^2$ is odd — is a different experience entirely. Write $n = 2m+1$, expand, observe that $n^2 = 2(2m^2 + 2m) + 1$. Odd. The proof practically writes itself, and you are done before you have had time to feel clever about it.
 
-When to go for this strategy: When the hypothesis feels slippery and the conclusion feels solid, flip the statement. Sometimes the view from the other end is just cleaner.
+**When to go for this strategy:** When the hypothesis feels slippery and the conclusion feels solid, flip the statement. Sometimes the view from the other end is just cleaner.
 
 ### 3.3 Proof by Contradiction
 Assume the conclusion is false, and follow the consequences until the universe objects.
 
 Of the standard strategies, contradiction is the one with the most panache. There is something almost adversarial about it — you look the opposing claim in the eye and say: fine, let's play by your rules. You grant it full citizenship in your argument, reason carefully and honestly from it, and then arrive at something so mathematically absurd that the original assumption has nowhere left to hide. Pólya described contradiction as a method of inner discord — painful, he thought, yet necessary. I think he was right on both counts.
 
-Example: The irrationality of $\sqrt{2}$. A proof so clean it has been copied into lecture notes for two and a half millennia, and rightly so.
+**Example:** The irrationality of $\sqrt{2}$. A proof so clean it has been copied into lecture notes for two and a half millennia, and rightly so.
 Suppose $\sqrt{2}$ is rational. Write $\sqrt{2} = \frac{p}{q}$ in lowest terms. Then $2q^2 = p^2$, so $p^2$ is even, so $p$ is even — write $p = 2m$. Then $2q^2 = 4m^2$, giving $q^2 = 2m^2$, so $q$ is even. Both $p$ and $q$ are even, contradicting that $\frac{p}{q}$ was in lowest terms. $\blacksquare$
 
 The proof has a particular rhythm: extract a formal representation, pull on the thread, wait for the snap. You rarely see the contradiction coming until it is already there — and that delay is part of what Pólya meant. You are, for most of the proof, apparently building a case for the enemy. It takes nerve.
 
-When to go for this strategy: Contradiction earns its keep when the negation of the conclusion is something you can actually use — when assuming falsity gives you structure to work with rather than mere negation. That said, it is easy to reach for it as a comfort blanket, when a direct proof would have been shorter and more honest. A proof by contradiction that didn't need to be is a little like winning an argument by exhausting the other person. Technically a victory. Not exactly something to be proud of.
+**When to go for this strategy:** Contradiction earns its keep when the negation of the conclusion is something you can actually use — when assuming falsity gives you structure to work with rather than mere negation. That said, it is easy to reach for it as a comfort blanket, when a direct proof would have been shorter and more honest. A proof by contradiction that didn't need to be is a little like winning an argument by exhausting the other person. Technically a victory. Not exactly something to be proud of.
 
 ### 3.4 Mathematical Induction
 Induction is qualitatively different from the other strategies. It is a meta-principle for reasoning about statements indexed by the natural numbers.
 The idea: prove a base case, then prove that truth at $n$ implies truth at $n+1$. By the well-ordering principle of the natural numbers, the statement holds for all $n$.
 The most common failure mode in induction is writing the inductive step mechanically without being clear about what you are actually assuming. The inductive hypothesis is not a free lunch — it is a precise, formal assumption, and you must use it explicitly.
-Example: For all $n \geq 1$, $\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$.
+**Example:** For all $n \geq 1$, $\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$.
 Base case: $n = 1$. LHS $= 1$, RHS $= \frac{1 \cdot 2}{2} = 1$. ✓
 Inductive step: Assume the statement holds for some $n \geq 1$, i.e., $\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$. We must show it holds for $n+1$:
 $$\sum_{k=1}^{n+1} k = \left(\sum_{k=1}^{n} k\right) + (n+1) = \frac{n(n+1)}{2} + (n+1) = (n+1)\left(\frac{n}{2} + 1\right) = \frac{(n+1)(n+2)}{2}$$
 which is precisely the formula at $n+1$. ✓
 
-When to go for this strategy: Induction is for statements of the form "for all natural numbers $n$, [something about $n$]". The key is recognising when a problem has this recursive flavour — when the $n+1$ case is naturally expressed in terms of the $n$ case.
+**When to go for this strategy:** Induction is for statements of the form "for all natural numbers $n$, [something about $n$]". The key is recognising when a problem has this recursive flavour — when the $n+1$ case is naturally expressed in terms of the $n$ case.
 
 ---
 
@@ -111,11 +111,11 @@ evidence, and overwhelming anecdotal evidence from mathematicians, that the brai
 
 ## 5. A Proof in Real Time
 Rather than presenting a clean proof, I want to narrate the process of finding one. This is how I think when asked to prove something.
-Statement: For all $n \geq 0$, $3$ divides $n^3 - n$.
+**Statement:** For all $n \geq 0$, $3$ divides $n^3 - n$.
 
-First thought: Let me check. $n=1$: $1 - 1 = 0$. Divisible. $n=2$: $8 - 2 = 6$. Divisible. $n=3$: $27 - 3 = 24$. Divisible. Seems true.
+**First thought:** Let me check. $n=1$: $1 - 1 = 0$. Divisible. $n=2$: $8 - 2 = 6$. Divisible. $n=3$: $27 - 3 = 24$. Divisible. Seems true.
 
-Second thought: Can I factor? $n^3 - n = n(n^2 - 1) = n(n-1)(n+1)$.
+**Second thought:** Can I factor? $n^3 - n = n(n^2 - 1) = n(n-1)(n+1)$.
 Oh. That is $n-1$, $n$, and $n+1$ — three consecutive integers. And among any three consecutive integers, exactly one must be divisible by 3, because the integers cycle through residues $0, 1, 2$ modulo 3 indefinitely.
 So the product $n(n-1)(n+1)$ is divisible by 3. Done.
 
@@ -154,23 +154,21 @@ The definition is a challenge and response. An adversary hands you an $\varepsil
 This reframing matters enormously for proof writing. The ε-δ proof is not an algebraic ritual. It is a strategy for winning a game: given any $\varepsilon$, construct a $\delta$ that guarantees the required inequality. Once you see it that way, the structure of every ε-δ proof becomes natural rather than arbitrary.
 
 ### 7.2 A worked limit
-Statement: Prove that $\lim_{x \to 2} 3x = 6$.
+**Statement:** Prove that $\lim_{x \to 2} 3x = 6$.
 This is, geometrically, obvious. The function $f(x) = 3x$ is a straight line through the origin. Of course it approaches 6 as $x$ approaches 2. But "of course" is not a proof.
 
-Scratchpad:
-What do I need to show? I need to show that for any $\varepsilon > 0$, 
-
-I can find a $\delta > 0$ such that $|x - 2| < \delta$ implies $|3x - 6| < \varepsilon$.
-
-Let me stare at the conclusion: $|3x - 6| < \varepsilon$. Can I simplify? $|3x - 6| = |3(x-2)| = 3|x - 2|$.
-
-Oh. So the condition $|3x - 6| < \varepsilon$ is exactly the same as $3|x - 2| < \varepsilon$, which is $|x - 2| < \frac{\varepsilon}{3}$.
-
-So if I choose $\delta = \frac{\varepsilon}{3}$, then $|x - 2| < \delta$ gives $|3x - 6| = 3|x-2| < 3\delta = \varepsilon$.
+**Scratchpad:**
+> What do I need to show? I need to show that for any $\varepsilon > 0$, I can find a $\delta > 0$ such that $|x - 2| < \delta$ implies $|3x - 6| < \varepsilon$.
+>
+> Let me stare at the conclusion: $|3x - 6| < \varepsilon$. Can I simplify? $|3x - 6| = |3(x-2)| = 3|x - 2|$.
+>
+> Oh. So the condition $|3x - 6| < \varepsilon$ is exactly the same as $3|x - 2| < \varepsilon$, which is $|x - 2| < \frac{\varepsilon}{3}$.
+>
+> So if I choose $\delta = \frac{\varepsilon}{3}$, then $|x - 2| < \delta$ gives $|3x - 6| = 3|x-2| < 3\delta = \varepsilon$.
 
 You always start from the conclusion, work backwards to find $\delta$, then write the proof forwards. The δ is not guessed — it is reverse-engineered from what you need. This is the move that textbooks hide. They present the δ at the start of the proof, fully formed, as if by divine inspiration. In reality, it was computed on a scratchpad, exactly as above.
 
-Final proof:
+**Final proof:**
 Let $\varepsilon > 0$ be given. Choose $\delta = \frac{\varepsilon}{3}$. Then, whenever $0 < |x - 2| < \delta$:
 $$|f(x) - 6| = |3x - 6| = 3|x - 2| < 3\delta = 3 \cdot \frac{\varepsilon}{3} = \varepsilon$$
 Therefore $\lim_{x \to 2} 3x = 6$. $\blacksquare$
