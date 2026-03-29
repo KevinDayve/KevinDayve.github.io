@@ -1,4 +1,4 @@
-# The Art of Mathematical Proof: A Short Guide
+The Art of Mathematical Proof: A Short Guide
 
 ## Preface
 I spent an inordinate amount of time thinking about what an ideal proof-writing guide should look like. Should it be a repository of several proof-writing techniques, or a plethora of mathematical symbols, I asked myself. But those guides already exist. And if you've sat in a real analysis course staring at a problem, you probably know that they're not sufficient.
@@ -156,17 +156,24 @@ This reframing matters enormously for proof writing. The ε-δ proof is not an a
 ### 7.2 A worked limit
 Statement: Prove that $\lim_{x \to 2} 3x = 6$.
 This is, geometrically, obvious. The function $f(x) = 3x$ is a straight line through the origin. Of course it approaches 6 as $x$ approaches 2. But "of course" is not a proof.
+
 Scratchpad:
-What do I need to show? I need to show that for any $\varepsilon > 0$, I can find a $\delta > 0$ such that $|x - 2| < \delta$ implies $|3x - 6| < \varepsilon$.
+What do I need to show? I need to show that for any $\varepsilon > 0$, 
+
+I can find a $\delta > 0$ such that $|x - 2| < \delta$ implies $|3x - 6| < \varepsilon$.
+
 Let me stare at the conclusion: $|3x - 6| < \varepsilon$. Can I simplify? $|3x - 6| = |3(x-2)| = 3|x - 2|$.
+
 Oh. So the condition $|3x - 6| < \varepsilon$ is exactly the same as $3|x - 2| < \varepsilon$, which is $|x - 2| < \frac{\varepsilon}{3}$.
-So if I choose $\delta = \frac{\varepsilon}{3}$, then $|x - 2| < \delta$ gives $|3x - 6| = 3|x-2| < 3\delta = \varepsilon$. That's it.
-Notice the structure of the scratchpad: start from the conclusion, work backwards to find $\delta$, then write the proof forwards. The δ is not guessed — it is reverse-engineered from what you need. This is the move that textbooks hide. They present the δ at the start of the proof, fully formed, as if by divine inspiration. In reality, it was computed on a scratchpad, exactly as above.
-The proof:
+
+So if I choose $\delta = \frac{\varepsilon}{3}$, then $|x - 2| < \delta$ gives $|3x - 6| = 3|x-2| < 3\delta = \varepsilon$.
+
+You always start from the conclusion, work backwards to find $\delta$, then write the proof forwards. The δ is not guessed — it is reverse-engineered from what you need. This is the move that textbooks hide. They present the δ at the start of the proof, fully formed, as if by divine inspiration. In reality, it was computed on a scratchpad, exactly as above.
+
+Final proof:
 Let $\varepsilon > 0$ be given. Choose $\delta = \frac{\varepsilon}{3}$. Then, whenever $0 < |x - 2| < \delta$:
 $$|f(x) - 6| = |3x - 6| = 3|x - 2| < 3\delta = 3 \cdot \frac{\varepsilon}{3} = \varepsilon$$
 Therefore $\lim_{x \to 2} 3x = 6$. $\blacksquare$
-The proof is six lines. The scratchpad told you what those six lines had to be.
 
 ### 7.3 Why some find this hard in the beginning
 The difficulty of ε-δ is not notational. Students who believe it is notational will memorise the definition, learn to copy the structure of a few worked examples, and pass their exams without ever understanding what they have done.
