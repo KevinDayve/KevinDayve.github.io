@@ -158,6 +158,7 @@ This reframing matters enormously for proof writing. The ε-δ proof is not an a
 This is, geometrically, obvious. The function $f(x) = 3x$ is a straight line through the origin. Of course it approaches 6 as $x$ approaches 2. But "of course" is not a proof.
 
 **Scratchpad:**
+
 > What do I need to show? I need to show that for any $\varepsilon > 0$, I can find a $\delta > 0$ such that $|x - 2| < \delta$ implies $|3x - 6| < \varepsilon$.
 >
 > Let me stare at the conclusion: $|3x - 6| < \varepsilon$. Can I simplify? $|3x - 6| = |3(x-2)| = 3|x - 2|$.
@@ -169,6 +170,7 @@ This is, geometrically, obvious. The function $f(x) = 3x$ is a straight line thr
 You always start from the conclusion, work backwards to find $\delta$, then write the proof forwards. The δ is not guessed — it is reverse-engineered from what you need. This is the move that textbooks hide. They present the δ at the start of the proof, fully formed, as if by divine inspiration. In reality, it was computed on a scratchpad, exactly as above.
 
 **Final proof:**
+
 Let $\varepsilon > 0$ be given. Choose $\delta = \frac{\varepsilon}{3}$. Then, whenever $0 < |x - 2| < \delta$:
 $$|f(x) - 6| = |3x - 6| = 3|x - 2| < 3\delta = 3 \cdot \frac{\varepsilon}{3} = \varepsilon$$
 Therefore $\lim_{x \to 2} 3x = 6$. $\blacksquare$
@@ -186,6 +188,7 @@ The struggle is not incidental. It is the rite of passage. In fact, once you get
 
 ### 7.4 Try to visualise what you're being asked to prove
 There is one more thing worth saying about real analysis specifically, because it runs against a misconception that even some instructors quietly hold: that analysis is a mechanical subject. That once you have the definitions, the proofs are a matter of careful symbol manipulation.
+
 This is broadly true, but sometimes misleading.
 
 The symbols are the record of an argument. But the argument itself, in analysis more than almost anywhere else, tends to originate as a picture. Not a diagram you would submit in an assignment — an internal image, a spatial sense of what the objects are doing and where they need to end up.
@@ -193,6 +196,7 @@ The symbols are the record of an argument. But the argument itself, in analysis 
 Consider what it means for a sequence $(a_n)$ to converge to a limit $L$. The formal definition says: for every $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that for all $n > N$, $|a_n - L| < \varepsilon$. But before you touch that definition in a proof, it helps enormously to see it. Draw the number line. Mark $L$. Draw the band $(L - \varepsilon, L + \varepsilon)$ around it — the ε-neighbourhood. Now ask: what does the sequence need to do? It needs to eventually fall inside that band, and stay there. Every term from some point $N$ onwards must land inside. The band can be made arbitrarily thin, and the claim is that the sequence cooperates no matter what.
 
 Once you have that picture, the proof is not a mystery. You know what you are trying to show: that you can always find an $N$ that forces all subsequent terms into the band. The algebra is just the mechanism for finding that $N$.
+
 The same spatial intuition carries further into the subject, and arguably becomes more important as the theorems get harder.
 
 Take the Bolzano-Weierstrass theorem: every bounded sequence has a convergent subsequence. This is one of those statements that feels obviously true and yet resists easy formalisation. The standard proof uses a bisection argument — you repeatedly halve the interval, always keeping the half that contains infinitely many terms, producing a nested sequence of intervals whose lengths shrink to zero. By the Nested Interval Property (**NIP**), their intersection is non-empty, and the point it contains is the limit.
@@ -204,6 +208,7 @@ The proof is a mechanical realisation of that image. The nested intervals are no
 This matters for how you approach a proof when you are stuck. If you are working on a convergence argument and nothing is moving, the question to ask is not "which theorem should I apply?" It is: what do I want to happen, geometrically? Where should the sequence be landing? What does the neighbourhood look like? Which terms are inside it and which are outside? Once you can see the target, the formal argument usually follows — because you are no longer manipulating symbols blindly. 
 
 You are transcribing something you can already see.
+
 This is, I think, what it actually feels like to be inside mathematics, as opposed to performing it. The formalism and the geometry inform each other. You move between them fluidly, using each to check and sharpen the other. The picture tells you what to prove; the algebra tells you whether the picture was right.
 
 ## Conclusion: From Application to Inhabitation
