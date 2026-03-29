@@ -193,7 +193,11 @@ This is broadly true, but sometimes misleading.
 
 The symbols are the record of an argument. But the argument itself, in analysis more than almost anywhere else, tends to originate as a picture. Not a diagram you would submit in an assignment — an internal image, a spatial sense of what the objects are doing and where they need to end up.
 
-Consider what it means for a sequence $(a_n)$ to converge to a limit $L$. The formal definition says: for every $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that for all $n > N$, $|a_n - L| < \varepsilon$. But before you touch that definition in a proof, it helps enormously to see it. Draw the number line. Mark $L$. Draw the band $(L - \varepsilon, L + \varepsilon)$ around it — the ε-neighbourhood. Now ask: what does the sequence need to do? It needs to eventually fall inside that band, and stay there. Every term from some point $N$ onwards must land inside. The band can be made arbitrarily thin, and the claim is that the sequence cooperates no matter what.
+Consider what it means for a sequence $(a_n)$ to converge to a limit $L$. The formal definition says: for every $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that for all $n > N$:
+
+$$|a_n - L| < \varepsilon$$
+
+But before you touch that definition in a proof, it helps enormously to see it. Draw the number line. Mark $L$. Draw the band $(L - \varepsilon, L + \varepsilon)$ around it — the ε-neighbourhood. Now ask: what does the sequence need to do? It needs to eventually fall inside that band, and stay there. Every term from some point $N$ onwards must land inside. The band can be made arbitrarily thin, and the claim is that the sequence cooperates no matter what.
 
 Once you have that picture, the proof is not a mystery. You know what you are trying to show: that you can always find an $N$ that forces all subsequent terms into the band. The algebra is just the mechanism for finding that $N$.
 
